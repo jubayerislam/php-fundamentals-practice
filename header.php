@@ -70,13 +70,13 @@ require_once "mysqlconnect.php";
                     
                     // Retrieve logged-in user's database ID for the profile link
                     $current_user = mysqli_real_escape_string($conn, $_SESSION['username']);
-                    $sql = "SELECT id FROM users WHERE username = '$current_user' LIMIT 1";
-                    $result = mysqli_query($conn, $sql);
+                    $nav_sql = "SELECT id FROM users WHERE username = '$current_user' LIMIT 1";
+                    $nav_result = mysqli_query($conn, $nav_sql);
                     $logged_in_id = 0;
 
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        $user_row = mysqli_fetch_assoc($result);
-                        $logged_in_id = $user_row['id'];
+                    if ($nav_result && mysqli_num_rows($nav_result) > 0) {
+                        $nav_user_row = mysqli_fetch_assoc($nav_result);
+                        $logged_in_id = $nav_user_row['id'];
                     }
                 ?>
                     <!-- Navigation links visible ONLY to Authenticated Users -->
